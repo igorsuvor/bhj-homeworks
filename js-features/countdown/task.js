@@ -2,10 +2,10 @@
 function startTimer() {
   const elementMain = document.getElementById('timer');
 
-  const element = setInterval(() => {
+  const timer = setInterval(() => {
     elementMain.textContent --;
-    if (elementMain.textContent === '0') {
-      clearInterval(element);
+    if (+elementMain.textContent === 0) {
+      clearInterval(timer);
       alert('Вы победили в конкурсе!')
     }
   }, 1000);
