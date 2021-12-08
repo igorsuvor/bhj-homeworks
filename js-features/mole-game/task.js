@@ -10,10 +10,22 @@ for (let i = 1; i <= 9; i++) {
   incident.onclick = () => {
     if (incident.classList.contains('hole_has-mole')) {
       dead.textContent ++;
-      if (dead.textContent === '10') alert ('Победа!')
+      if (+dead.textContent === 10) {
+        setResetCounter();
+        alert ('Победа!')
+      }
     } else {
         lost.textContent ++;
-        if (lost.textContent === '5') alert ('Проигрыш :(')
+        if (+lost.textContent === 5) {
+          setResetCounter();
+          alert ('Проигрыш :(')
+        }
       }
   }
+
+  setResetCounter = () => {
+    dead.textContent = 0;
+    lost.textContent = 0;
+  }
+
 }
