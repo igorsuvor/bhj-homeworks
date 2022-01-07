@@ -3,16 +3,20 @@ const divTooltip = document.createElement('div');
 
 hasTooltip.forEach((elem) => {
   elem.addEventListener('click', () => {
-    divTooltip.classList.add('tooltip');
-    divTooltip.classList.toggle('tooltip_active');
-
-    divTooltip.setAttribute('style', 
-    `left: ${elem.getBoundingClientRect().left}px; 
-    top: ${elem.getBoundingClientRect().bottom}px`
-    );
-
-    divTooltip.textContent = `${elem.title}`;
-    elem.insertAdjacentElement('afterend', divTooltip);
     event.preventDefault();
+    const aktiveTooltip = event.target.querySelector('.tooltip');
+
+    if (!aktiveTooltip) {
+      divTooltip.setAttribute('style', 
+      `left: ${elem.getBoundingClientRect().left}px; 
+      top: ${elem.getBoundingClientRect().bottom}px`
+      );
+    
+      divTooltip.classList.add('tooltip', 'tooltip_active');
+      divTooltip.textContent = `${elem.title}`;
+      event.target.insertAdjacentElement('afterBegin', divTooltip);
+    } else {
+      aktiveTooltip.remove();
+    }
   });
 });
