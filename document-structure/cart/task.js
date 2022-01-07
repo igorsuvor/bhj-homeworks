@@ -20,10 +20,11 @@ plus.forEach((elem) => {
 
 productAdd.forEach((elem) => {
   elem.addEventListener('click', () => {
-    const productID = elem.closest('.product').dataset.id;
+    const product = elem.closest('.product');
+    const productID = product.dataset.id;
     const cartProduct = [...document.querySelectorAll('.cart__product')];
-    const productImg = elem.closest('.product').querySelector('img').src;
-    const productQuantity = elem.closest('.product').querySelector('.product__quantity-value');
+    const productImg = product.querySelector('img').src;
+    const productQuantity = product.querySelector('.product__quantity-value');
 
     cartProduct.find(elem => productID == elem.dataset.id);
     if (cartProduct.find(elem => productID == elem.dataset.id) == undefined) {
