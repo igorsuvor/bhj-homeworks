@@ -1,8 +1,8 @@
-let signinActive = document.getElementById("signin");
-let welcomeForm = document.getElementById("welcome");
-let userID = document.getElementById("user_id");
+const signinActive = document.getElementById("signin");
+const welcomeForm = document.getElementById("welcome");
+const userID = document.getElementById("user_id");
 
-let signinState = (answer) => {
+const signinState = (answer) => {
   if (answer !== null && answer.success === true) {
     signinActive.classList.remove("signin_active");
     welcomeForm.classList.add("welcome_active");
@@ -20,6 +20,7 @@ let signinState = (answer) => {
   } else {
     if (localStorage.user !== undefined) {
       welcomeForm.classList.add("welcome_active");
+      signinActive.classList.remove("signin_active");
       userID.textContent = JSON.parse(localStorage.user).user_id;
       return;
     }
@@ -29,7 +30,7 @@ let signinState = (answer) => {
 };
 signinState(null);
 
-let uploadForm = document.getElementById(`signin__form`);
+const uploadForm = document.getElementById(`signin__form`);
 uploadForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -45,7 +46,7 @@ uploadForm.addEventListener("submit", (e) => {
   };
 });
 
-let clearButton = document.querySelector(`.clear`);
+const clearButton = document.querySelector(`.clear`);
 clearButton.addEventListener("click", (e) => {
   e.preventDefault();
   localStorage.removeItem(`user`);
